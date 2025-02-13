@@ -1,0 +1,26 @@
+name: Alert on Push/Pull Request
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  alert_owner:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get IP Address
+        run: |
+          echo "Fetching IP Address..."
+          IP=$(curl -s https://api64.ipify.org)
+          echo "Public IP Address: $IP"
+          echo "IP_ADDRESS=$IP" >> $GITHUB_ENV
+
+      - name: Send Notification
+        run: |
+          echo "New push or pull request detected!"
+          echo "Triggered by: ${{ github.actor }}"
+          echo "IP Address: $IP_ADDRESS"
