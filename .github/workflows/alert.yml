@@ -3,7 +3,7 @@ name: Alert on Push/Pull Request
 on:
   push:
     branches:
-      - main
+      - alert
   pull_request:
     types: [opened, reopened]
   workflow_dispatch:
