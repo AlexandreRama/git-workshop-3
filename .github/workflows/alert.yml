@@ -7,13 +7,6 @@ on:
   pull_request:
     types: [opened, reopened]
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'     
-        required: true
-        default: 'alert'
-      tags:
-        description: 'Test scenario tags'  
 
 jobs:
   alert_owner:
